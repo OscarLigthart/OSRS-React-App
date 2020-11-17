@@ -1,0 +1,9 @@
+.game {
+    background-size: 100% 100%;
+}
+
+.game-interface {
+    height: 100%;
+    box-sizing: border-box;
+    padding: 1rem 2rem;
+}

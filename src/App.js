@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import './App.css';
 import './styles.css';
 
-import Chatbox from "./Pages/Chatbox";
+import Layout from "./Components/Layout";
 
 /**
  *  The main component of this App, that will be responsible for loading all subsequent
@@ -62,7 +62,7 @@ class App extends Component {
 
         // the page loaded on landscape will be the correct one,
         // where we will install the app
-        <Chatbox/>
+        <Layout/>
 
           : 
 
