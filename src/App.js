@@ -69,13 +69,13 @@ class App extends Component {
         // if it is portrait, user should put the phone to landscape mode
         this.state.layoutMode === 'portrait' ?
 
-        <div class="screen-warning">
+        <div className="screen-warning">
           <p>Please turn your phone to landscape mode</p>
         </div>
 
         // otherwise it is desktop
         :
-        <div class="screen-warning">This app is built for mobile phone!</div>
+        <div className="screen-warning">This app is built for mobile phone!</div>
       }
     </div>
   );
