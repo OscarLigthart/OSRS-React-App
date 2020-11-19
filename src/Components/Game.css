@@ -3,11 +3,7 @@
     height: 100%;
     display:  grid;
 
-    grid-template-columns: 65% 35%;
-
-    transition-property: opacity; /* set opacity to one of the transition properties */
-    transition-duration: 2s; /* set transition duration */
-    
+    grid-template-columns: 65% 35%;   
 }
 
 .game-left {

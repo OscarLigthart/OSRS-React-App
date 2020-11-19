@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 import './Layout.css';
-import Inventory from './Game/Inventory';
-import GameInterface from './Game/GameInterface';
+import Game from './Game';
+import Quiz from './Quiz';
 
 /**
  *  This is the layout of the app when playing.
@@ -20,7 +20,35 @@ class Layout extends Component {
 
     super();
 
-    this.gameInterface = React.createRef();
+    this.state = {
+      show: true,
+      state: 'game',
+      teleportAnimation: false,
+    }
+
+  }
+
+  // handler for teleport commands, will switch screens
+  teleportHandler = (location) => {
+    
+    // 3 time outs, but first create animation
+    this.setState({show: false});
+    
+    setTimeout(()=> {
+
+      this.setState({
+        state: location,
+        teleportAnimation: true
+      })
+    }, 1500);
+
+    setTimeout(() => {
+
+      this.setState({
+        teleportAnimation: false,
+        show: true
+      })
+    }, 3000);
 
   }
 
@@ -29,36 +57,28 @@ class Layout extends Component {
   }
 
   render() {
+    const state = () => {
+      switch(this.state.state) {
 
-    const backgroundStyles = {      
-      minimap: { backgroundImage: 'url(' + process.env.PUBLIC_URL + '/Images/kompas.png)' },
-      skills: { backgroundImage: 'url(' + process.env.PUBLIC_URL + '/Images/skills.png)'}
-    };
+        case "game":   return <Game onTeleport={this.teleportHandler}/>;
+        case "wizard":   return <Quiz />;
 
+
+        default:      return <h1>No project match</h1>
+      }
+    }
 
     return (
       
       <div className="layout">
 
-        <div className="layout-left">  
+          <div className="black-screen"/>
 
-          <GameInterface ref={this.gameInterface}/>
+          {/* Teleport animation */}
+          {this.state.teleportAnimation ? <img src= {process.env.PUBLIC_URL + '/Gifs/teleport.gif'} className="teleport-animation" alt=""/> : null }
 
-          <Inventory onInventoryClick={this.inventoryHandler}/>
-
-        </div>
-
-        <div className="layout-right">
-
-          <div className="layout-minimap" style={backgroundStyles.minimap}>
-            <img src= {process.env.PUBLIC_URL + '/Images/minimap.png'} className="layout-minimap-overlay" alt=""/>
-          </div>
-
-          <div className="layout-skills" style={backgroundStyles.skills}>
-              
-          </div>
-
-        </div>
+          {/* Animation */}
+          <div className={`show-screen ${this.state.show ? 'fadeIn':'fadeOut'}`}>{state()}</div>        
 
       </div>
     );
