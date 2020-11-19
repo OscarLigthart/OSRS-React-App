@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 import './Layout.css';
-import Inventory from './Layout/Inventory';
-import GameInterface from './Layout/GameInterface';
+import Inventory from './Game/Inventory';
+import GameInterface from './Game/GameInterface';
 
 /**
  *  This is the layout of the app when playing.
