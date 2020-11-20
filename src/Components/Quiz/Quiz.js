@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
 import './Quiz.css';
-import Dialogue from './Quiz/Dialogue';
+import Dialogue from './Dialogue';
 
-import ChatLayout from '../Widgets/ChatLayout';
+import ChatLayout from '../Tools/ChatLayout';
 
 // Import Chatlayout here
 

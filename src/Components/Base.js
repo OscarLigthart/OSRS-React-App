@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 
 import './Base.css';
-import Game from './Game';
-import Quiz from './Quiz';
+import Game from './Game/Game';
+import Quiz from './Quiz/Quiz';
 
-
-const test= 123;
 /**
  *  This is the base of the app when playing.
  *  It is also responsible for all communications between the different components.

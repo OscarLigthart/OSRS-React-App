@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import './ChatLayout.css';
 
-import Inventory from '../Components/Game/Inventory';
+import Inventory from './Inventory';
 import Chatbox from './Chatbox';
 
 /**
