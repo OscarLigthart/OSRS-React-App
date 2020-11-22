@@ -26,6 +26,8 @@ class Layout extends Component {
       teleportAnimation: false,
     }
 
+    this.quizCheckpoint = false;
+
   }
 
   // handler for teleport commands, will switch screens
@@ -56,12 +58,14 @@ class Layout extends Component {
     this.gameInterface.current.show(item);
   }
 
+  quizHandler = () => { this.quizCheckpoint = true };
+
   render() {
     const state = () => {
       switch(this.state.state) {
 
         case "game":   return <Game onTeleport={this.teleportHandler}/>;
-        case "wizard":   return <Quiz />;
+        case "wizard":   return <Quiz checkpointReached={this.quizCheckpoint} onTeleport={this.teleportHandler} onCheckpoint={this.quizHandler}/>;
 
 
         default:      return <h1>No project match</h1>

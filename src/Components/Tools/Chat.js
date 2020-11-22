@@ -32,6 +32,9 @@ class Chat extends Component {
     this.state = {
       loaded:false
     }
+
+    // take the data
+    this.data = props.data;
   }
 
   componentDidMount() {
@@ -41,6 +44,10 @@ class Chat extends Component {
 
   handleChoice = (choice) => {
     this.props.onChoice(choice);
+  }
+
+  handleEvent = (event) => {
+    this.props.onEvent(event);
   }
 
 
@@ -73,7 +80,13 @@ class Chat extends Component {
         {/* DO WE INSERT THE WIDGET? OR DO WE CREATE CHATBOX AND WORK WITH THAT */}
 
         {/* There's always going to be the Chatbox here right, so create it here */}
-        <Chatbox ref={this.chatbox} conversation={this.conversation} bubbleChoice={this.handleChoice}/>
+        <Chatbox 
+          ref={this.chatbox} 
+          conversation={this.conversation} 
+          data={this.data} 
+          bubbleChoice={this.handleChoice} 
+          bubbleEvent={this.handleEvent}
+        />
 
 
 

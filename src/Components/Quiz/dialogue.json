@@ -1,0 +1,481 @@
+{
+    "start": [
+        {
+            "type":     "dialogue",
+            "speaker":  "",
+            "text": "By a magical force, you instantly arrive at the wizard's tower"
+        },{
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text": "Wow my head feels a little weird... Where am I?"
+        },{
+            "type":     "dialogue",
+            "speaker":  "professor",
+            "text": "Welcome to the Wizard's tower! Sinterklaas told me that you might drop by."
+        }, {
+            "type":     "dialogue",
+            "speaker": "professor",
+            "text": "I heard that you might be looking for a Dramen staff. Luckily for you, I am in possession of such an item."
+        }, {
+            "type":     "dialogue",
+            "speaker": "guido",
+            "text": "Great! Could you hand it over?"  
+        }, {
+            "type":     "dialogue",
+            "speaker": "professor",
+            "text": "Of course! If you would simply be so kind to give me a glass of beer!"
+        }, {
+            "type":     "dialogue",
+            "speaker": "guido",
+            "text": "Oh really? It's that simple?"
+        }, {
+            "type":     "dialogue",
+            "speaker": "wizard",
+            "text": "Professor will you stop memeing already?"
+        }, {
+            "type":     "dialogue",
+            "speaker": "wizard",
+            "text": "No my dear boy, Sinterklaas asked us to test your knowledge. If you manage to pass the test, we will hand over the staff!"
+        }, {
+            "type":     "dialogue",
+            "speaker": "professor",
+            "text": "So, are you ready to take on the knowledge test?"
+        }, {
+            "type":   "choice",
+            "choices": [{
+                "text":  "Yes of course! This will be a piece of cake.",
+                "goto":  "question1"
+            },{
+                "text":  "No fuck you guys! That's lame!",
+                "goto":  "decline"
+            }]
+        }
+    ],
+               
+    "decline": [
+        {
+            "type":     "dialogue",
+            "speaker":  "professor",
+            "text":     "Well then, no present for you! Come back when you change your mind!"
+        },
+        {
+            "type":     "end"
+        }
+
+    ],
+
+    "question1": [
+        {
+            "type":     "dialogue",
+            "speaker":  "wizard",
+            "text":     "Very well! Here is my first question:"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "wizard",
+            "text":     "Who is the God of law?"
+        },
+        {
+            "type": "choice",
+            "choices": [
+                {
+                    "text": "Bandos",
+                    "goto": "retry"
+                },
+                {
+                    "text": "Zamorak",
+                    "goto": "retry"
+                },
+                {
+                    "text": "Saradomin",
+                    "goto": "retry"
+                },
+                {
+                    "text": "Armadyl",
+                    "goto": "question2"
+                }
+            ]
+        }
+    ],
+
+    "question2": [
+        {
+            "type":     "dialogue",
+            "speaker":  "black-wizard",
+            "text":     "Good answer! Now it is my turn to ask a question."
+        },
+        {
+            "type":     "dialogue",
+            "speaker" : "black-wizard",
+            "text":     "What is the name of the highest level monster you face in the final fight of Recipe for Disaster?"
+        },
+        {
+            "type":     "choice",
+            "choices": [
+                {
+                    "text": "Flambeed",
+                    "goto": "question3"
+                },
+                {
+                    "text": "Gelatinnoth Mother",
+                    "goto": "retry"
+                },
+                {
+                    "text": "Agrith-Na-Na",
+                    "goto": "retry"
+                },
+                {
+                    "text": "Karamel",
+                    "goto": "retry"
+                }
+            ]
+        }
+    ],
+
+    "question3" : [
+        {
+            "type": "dialogue",
+            "speaker": "wizard",
+            "text":     "Good job! I knew you would answer that one correctly."
+        },
+        {
+            "type": "dialogue",
+            "speaker": "wizard",
+            "text":     "Here is my next and the third question."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "wizard",
+            "text":     "How much experience in total will you get if you mine enough ore for two rune bars?"
+        },
+        {
+            "type": "choice",
+            "choices": [
+                {
+                    "text": "1000",
+                    "goto": "retry"
+                },
+                {
+                    "text": "1050",
+                    "goto": "question4"
+                },
+                {
+                    "text": "950",
+                    "goto": "retry"
+                },
+                {
+                    "text": "1100",
+                    "goto": "retry"
+                }
+            ]
+        }
+    ],
+
+    "question4": [
+        {
+            "type": "dialogue",
+            "speaker": "professor",
+            "text":     "Impressive work, stranger. I wonder whether you will be able to answer this."
+        },
+        {
+            "type": "dialogue",
+            "speaker": "professor",
+            "text":     "Which of these cannot be made into a potion with Avantoe?"
+        },
+        {
+            "type": "choice",
+            "choices": [
+                {
+                    "text": "Mort Myre fungi",
+                    "goto": "retry"
+                },
+                {
+                    "text": "Ground kebbit teeth",
+                    "goto": "retry"
+                },
+                {
+                    "text": "Ground unicorn horn",
+                    "goto": "question5"
+                },
+                {
+                    "text": "Snape grass",
+                    "goto": "retry"
+                }
+            ]
+        }
+    ],
+
+    "question5": [
+        {
+            "type": "dialogue",
+            "speaker": "black-wizard",
+            "text": "I am most impressed stranger! Now I will ask a question about the best skill there is."
+        },
+        {
+            "type": "dialogue",
+            "speaker": "black-wizard",
+            "text": "If I crafted one pure essence of every rune I can at level 64 runecrafting, how many runes will I have?"
+        },
+        {
+            "type": "choice",
+            "choices": [
+                {
+                    "text": "24",
+                    "goto": "retry"
+                },
+                {
+                    "text": "30",
+                    "goto": "retry"
+                },
+                {
+                    "text": "28",
+                    "goto": "phase2"
+                },
+                {
+                    "text": "26",
+                    "goto": "retry"
+                }             
+            ]
+        }
+    ],
+
+    "phase2": [
+        {
+            "type": "dialogue",
+            "speaker": "professor",
+            "text": "You seem to know your way around the world of RuneScape stranger. I did not expect as much."
+        },        
+        {
+            "type": "dialogue",
+            "speaker": "professor",
+            "text": "However, let's test if you ever go outside. What do you know about the real world?"
+        },
+        {
+            "type": "transition",
+            "goto": "question6"
+        }
+    ],
+
+    "question6": [
+        {
+            "type": "dialogue",
+            "speaker": "professor",
+            "text": "A merchant can place 8 large boxes or 10 smalle boxes into a carton for shipping. In one shipment, he sent a total of 96 boxes. If there are more large boxes than small boxes, how many cartons did he ship?"
+        },  
+        {
+            "type":    "input",
+            "correct": "11",
+            "goto":    {
+                "correct": "question7",
+                "wrong":    "retry"
+            }
+        }
+    ],
+
+    "question7": [
+        {
+            "type": "dialogue",
+            "speaker": "black-wizard",
+            "text": "Good job! You seem to be very good at math! How about your political background?"
+        },
+        {
+            "type": "dialogue",
+            "speaker": "black-wizard",
+            "text": "How many presidents have ruled over the United States of America?"
+        },
+        {
+            "type": "choice",
+            "choices": [
+                {
+                    "text": "44",
+                    "goto": "question8"
+                },
+                {
+                    "text": "45",
+                    "goto": "retry"
+                },
+                {
+                    "text": "42",
+                    "goto": "retry"
+                },
+                {
+                    "text": "46",
+                    "goto": "retry"
+                }             
+            ]
+        }
+    ],
+
+    "question8": [
+        {
+            "type": "dialogue",
+            "speaker": "wizard",
+            "text": "Not bad at all, how about the next one?"
+        },
+        {
+            "type": "dialogue",
+            "speaker": "wizard",
+            "text": "What is the most common type of star found in the Milky Way?"
+        },
+        {
+            "type": "choice",
+            "choices": [
+                {
+                    "text": "Red dwarf stars",
+                    "goto": "question9"
+                },
+                {
+                    "text": "Yellow dwarf stars",
+                    "goto": "retry"
+                },
+                {
+                    "text": "Blue stars",
+                    "goto": "retry"
+                },
+                {
+                    "text": "Neutron stars",
+                    "goto": "retry"
+                }             
+            ]
+        }
+    ],
+
+    "question9": [
+        {
+            "type": "dialogue",
+            "speaker": "professor",
+            "text": "So you even seem to know your way around the universe."
+        },
+        {
+            "type": "dialogue",
+            "speaker": "professor",
+            "text": "But how about some smaller stuff?"
+        },
+        {
+            "type": "dialogue",
+            "speaker": "professor",
+            "text": "How many neurons can be found in the human brain?"
+        },
+        {
+            "type": "choice",
+            "choices": [
+                {
+                    "text": "500.000.000",
+                    "goto": "retry"
+                },
+                {
+                    "text": "100.000.000.",
+                    "goto": "retry"
+                },
+                {
+                    "text": "100.000.000.000.",
+                    "goto": "question10"
+                },
+                {
+                    "text": "250.000.000.000.",
+                    "goto": "retry"
+                }             
+            ]
+        }
+    ],
+
+    "question10": [
+        {
+            "type": "dialogue",
+            "speaker": "leprechaun",
+            "text": "It seems these guys have been asking the wrong questions all along."
+        },
+        {
+            "type": "dialogue",
+            "speaker": "leprechaun",
+            "text": "I will put you to the real test!"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "leprechaun",
+            "text":     "What do the M's stand for in the M&Ms candy?"
+        },
+        {
+            "type": "choice",
+            "choices": [
+                {
+                    "text": "Merlin & Master",
+                    "goto": "retry"
+                },
+                {
+                    "text": "Mars & Murrie",
+                    "goto": "complete"
+                },
+                {
+                    "text": "Muffin & Millock",
+                    "goto": "retry"
+                },
+                {
+                    "text": "Mommy & Mingle",
+                    "goto": "retry"
+                }             
+            ]
+        }
+    ],
+
+    "complete": [
+        {
+            "type": "dialogue",
+            "speaker": "professor",
+            "text": "My apologies stranger, it seems that I have underestimated you."
+        },
+        {
+            "type": "dialogue",
+            "speaker": "professor",
+            "text": "Very good job. Please accept this as a reward for your intelligence."
+        },
+        {
+            "type": "transition",
+            "goto": "reward"
+        }
+    ],
+
+    "reward": [
+        {
+            "type": "item",
+            "item": "dramen_staff" ,
+            "text": "The wizard hands over the Dramen staff, and quickly flashes something that could be called a smile."
+        },
+        {
+            "type": "complete"
+        }
+    ],
+
+    "retry": [
+        {
+            "type": "dialogue",
+            "speaker": "professor",
+            "text": "HA! I knew you were not smart enough. It seems that Sinterklaas overestimated you."
+        },
+        {
+            "type": "dialogue",
+            "speaker": "professor",
+            "text": "Come back here when you have regained your intelect."
+        },
+        {
+            "type": "end"
+        }
+    ],
+
+    "back": [
+        {
+            "type": "dialogue",
+            "speaker": "professor",
+            "text": "Aaah it seems you're back to fail once more."
+        },
+        {
+            "type": "dialogue",
+            "speaker": "professor",
+            "text": "Let's see if you manage to fail a little bit less this time."
+        },
+        {
+            "type": "transition",
+            "goto": "question6"
+        }
+    ]
+}
