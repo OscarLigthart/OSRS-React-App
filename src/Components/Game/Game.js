@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 import './Game.css';
-import Inventory from '../Tools/Inventory';
 import GameInterface from './GameInterface';
+import Inventory from '../Tools/Inventory';
 
 /**
  *  This is the gamelayout of the app when playing.
@@ -16,7 +16,6 @@ class Game extends Component {
         super();
     
         this.gameInterface = React.createRef();
-    
     }
 
     teleportHandler = (location) => {

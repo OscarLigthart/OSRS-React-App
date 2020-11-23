@@ -36,9 +36,9 @@ class GameInterface extends Component {
         <div className="game-interface-box">
           {(() => {
             switch (this.state.show) {
-              case 'book':
+              case 'scroll_book':
                 return <Teleport onTeleportClick={this.teleportHandler}/>;
-              case 'scroll':
+              case 'clue_scroll':
                 return <Scroll/>;
               default:
                 return null;

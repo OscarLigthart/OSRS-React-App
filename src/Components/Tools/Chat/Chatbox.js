@@ -41,13 +41,12 @@ class Chatbox extends Component {
     this.data = props.data;
 
     // set the conversation stage to start
-    this.stage = this.data.stage ? this.data.stage : 'start';  
-    
-    // DEBUG
-    this.stage = 'question10';
+    this.stage = this.data ? this.data.stage : 'start';  
 
     // the state will consist of the current conversation object
     this.state = this.conversation[this.stage][this.step];
+
+    this.input = React.createRef();
 
     // bind methods
     this.nextDialogue = this.nextDialogue.bind(this);
@@ -67,6 +66,7 @@ class Chatbox extends Component {
     this.props.bubbleEvent(this.conversation[this.stage][this.step].type);
 
     // do not go to the next step if we are at the end
+    // TODO REMOVE CLICK TO CONTINUE UPON END
     if (this.conversation[this.stage][this.step].type === 'end' || this.conversation[this.stage][this.step].type === 'complete') return;
 
     // check if we have a transition to deal with
@@ -78,6 +78,9 @@ class Chatbox extends Component {
       // reset the steps
       this.step = 0;
     }
+
+    // check if we have an item do deal with
+    if (this.conversation[this.stage][this.step].type === 'item') this.props.bubbleItem(this.conversation[this.stage][this.step].item);
 
     // load next step
     this.setState(this.conversation[this.stage][this.step]);
@@ -129,7 +132,7 @@ class Chatbox extends Component {
     event.preventDefault();
 
     // the code below extracts the entered amount
-    let input = event.target.children[0].children[0].value;
+    let input = this.input.current.value;
 
     // now we need to cross reference this to the actual value;
     if (input === this.state.correct) this.handleChoice(this.state.goto.correct, input);
@@ -204,11 +207,11 @@ class Chatbox extends Component {
 
             <div className="chatbox-input">
               <form onSubmit={this.handleSubmit}>
-                <label>
-                  Enter amount:
-                  <input type="number" ref={this.input} />
+                <label className="chatbox-input-label">
+                  <strong>Enter amount:</strong>
+                  <input className="chatbox-input-input" type="number" ref={this.input} placeholder="*" name="amount" />
                 </label>
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit" className="chatbox-input-submit"/>
               </form>
             </div>
           

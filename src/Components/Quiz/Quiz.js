@@ -79,12 +79,16 @@ class Quiz extends Component {
     return (
       
       <div className="quiz"> 
-        
-        {/* Import Chatlayout */}
-        {/* <Chat widget={Dialogue}/> */}
 
         {/* Load the chat with the conversation */}
-        <Chat ref={this.chat} data={this.data} conversation={this.conversation} onChoice={this.handleChoice} onEvent={this.handleEvent}/>
+        <Chat 
+          ref={this.chat} 
+          data={this.data} 
+          conversation={this.conversation} 
+          onChoice={this.handleChoice} 
+          onEvent={this.handleEvent}
+          onItem={()=>{}} // do nothing when user clicks an item
+        />
 
       </div>
     );

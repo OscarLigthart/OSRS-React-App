@@ -37,3 +37,7 @@
     text-align: right;
     padding-right: 1rem;
 }
+
+.negative {
+    color: red;
+}

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 
 import './Chat.css';
 
-import Inventory from './Inventory';
 import Chatbox from './Chat/Chatbox';
+import Inventory from '../Tools/Inventory';
 
 /**
  *  This component is responsible for creating the layout when chatting
@@ -26,29 +26,34 @@ class Chat extends Component {
     // conversation to be passed to the chatbox
     this.conversation = props.conversation;
 
-    // the chatbox widget
+    // the subcomponents
     this.chatbox = React.createRef();
-
-    this.state = {
-      loaded:false
-    }
+    this.inventory = React.createRef();
 
     // take the data
     this.data = props.data;
-  }
 
-  componentDidMount() {
-
-    this.setState({loaded: true});
   }
 
   handleChoice = (choice) => {
-    this.props.onChoice(choice);
+    if (this.props.onChoice) this.props.onChoice(choice);
   }
 
   handleEvent = (event) => {
-    this.props.onEvent(event);
+    if (this.props.onEvent) this.props.onEvent(event);
   }
+
+  /**
+   * Method to pass an item that is given to the player into the inventory
+   * @param {} item 
+   */
+  handleItem = (item) => {
+    this.inventory.current.addItem(item);
+  };
+
+  inventoryHandler = (event) => {
+    this.props.onItem(event);
+  };
 
 
   // We will pass al arguments through here to the chatbox, and that will deal with the hard stuff
@@ -68,7 +73,7 @@ class Chat extends Component {
             {/* Inventory and minimap */}
 
             <div className="chat-layout-inventory">
-                <Inventory onInventoryClick={this.inventoryHandler}/>
+                <Inventory ref={this.inventory}  onInventoryClick={this.inventoryHandler}/>
             </div>
 
             <div className="chat-layout-minimap" style={backgroundStyles.minimap}>
@@ -86,9 +91,8 @@ class Chat extends Component {
           data={this.data} 
           bubbleChoice={this.handleChoice} 
           bubbleEvent={this.handleEvent}
+          bubbleItem={this.handleItem}
         />
-
-
 
         {/* Pass the widget that will control the chatbox 
 

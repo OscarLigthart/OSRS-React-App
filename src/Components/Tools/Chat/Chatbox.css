@@ -1,9 +1,15 @@
 .chatbox {
     background-size: 100% 100%;
-
     font-size: 18px;
 }
 
+/* 
+
+    Chatbox displays
+
+*/
+
+/* The display for when Guido talks */
 .chatbox-me-display {
     height: 100%;
 
@@ -13,6 +19,7 @@
     justify-content: center;
 }
 
+/* The display for when another talks */
 .chatbox-other-display {
 
     height: 100%;
@@ -21,28 +28,43 @@
     justify-content: center;
 }
 
+/* The display for when no one talks */
 .chatbox-none-display {
     height: 100%;
     display: grid;
     justify-content: center;
 }
 
+/* The text display within the chatbox */
 .chatbox-text-display {
-
     display: grid;
     grid-template-rows: 20% 60% 20%;
-
     justify-content: center;
 }
 
+/* The choice display within the chatbox */
 .chatbox-choice-display {
-
     display:grid;
     grid-template-rows: 20% 80%;
     justify-content: center;
     align-items: center;
 }
 
+.chatbox-item-display {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    justify-items: center;
+}
+
+/* 
+
+All the styles within the chatbox
+
+*/
+
+/**
+ *  Dialogue classes
+ */
 .chatbox-title{
     align-self: end;
     color: #8b0000;
@@ -53,22 +75,82 @@
     padding: 0 1rem;
 }
 
+/**
+ *  choice classes
+ */
 .chatbox-choice {
     margin-bottom: 1rem;
 }
+
+/**
+ *  Item classes
+ */
+.chatbox-item-image {
+    align-self: center;
+    height: 120px;
+    width: 120px;
+}
+
+.chatbox-item-layout {
+    display: grid;
+    grid-template-rows: 80% 20%;
+}
+
+.chatbox-item-text {
+    align-self: center;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    margin-top: 2rem;
+}
+
+/**
+ *  Input classes
+ */
+.chatbox-input {
+    align-self: center;
+}
+
+.chatbox-input-label {
+    display: grid;
+    grid-gap: 1rem;
+    margin-bottom: 1rem
+}
+
+.chatbox-input-input {
+    background: transparent;
+    border: none;
+    font-size: 20pt;
+    text-align: center;
+}
+
+.chatbox-input-submit {
+    box-shadow: inset 0px 1px 0px 0px #a6827e;
+    background: linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
+    background-color: #7d5d3b;
+    border-radius: 3px;
+    border: 1px solid #54381e;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #4d3534;
+}
+
+/** 
+ *
+ * Extra classes 
+ *
+ */
 
 .chatbox-continue {
     color: #0000FF
 }
 
 .chatbox-head {
-
     align-self: center;
-    /* margin-bottom: 1rem;
-    h */
     height: 125px;
     border-radius: 5px;
-
 }
 
 .chatbox-head-right {

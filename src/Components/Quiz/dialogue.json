@@ -381,14 +381,14 @@
 
     "question10": [
         {
-            "type": "dialogue",
-            "speaker": "leprechaun",
-            "text": "It seems these guys have been asking the wrong questions all along."
+            "type":     "dialogue",
+            "speaker":  "leprechaun",
+            "text":     "It seems these guys have been asking the wrong questions all along."
         },
         {
-            "type": "dialogue",
-            "speaker": "leprechaun",
-            "text": "I will put you to the real test!"
+            "type":     "dialogue",
+            "speaker":  "leprechaun",
+            "text":     "I will put you to the real test!"
         },
         {
             "type":     "dialogue",
@@ -399,22 +399,34 @@
             "type": "choice",
             "choices": [
                 {
-                    "text": "Merlin & Master",
+                    "text": "Merlin & Mildred",
                     "goto": "retry"
                 },
                 {
                     "text": "Mars & Murrie",
-                    "goto": "complete"
+                    "goto": "q10a"
                 },
                 {
                     "text": "Muffin & Millock",
                     "goto": "retry"
                 },
                 {
-                    "text": "Mommy & Mingle",
+                    "text": "Milly & Mingle",
                     "goto": "retry"
                 }             
             ]
+        }
+    ],
+
+    "q10a": [
+        {
+            "type": "dialogue",
+            "speaker": "leprechaun",
+            "text": "I'm amazed! You even managed to correctly answer the question that really matters."
+        },
+        {
+            "type": "transition",
+            "goto": "complete"
         }
     ],
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import './Inventory.css'
+import ItemList from '../Tools/Inventory/ItemList';
 
 class Inventory extends Component {
 
@@ -8,6 +9,25 @@ class Inventory extends Component {
 
     super();
 
+    // load the items in the list
+    this.state = {
+      items : ItemList
+    }
+
+    // bind methods
+    this.addItem = this.addItem.bind(this);
+  }
+
+  // Adds the item to the state item array
+  addItem = item => {
+
+    // append the item to the currently shown item list
+    ItemList.push(item);
+
+    // reload the inventory
+    this.setState({
+      items: ItemList
+    });
   }
 
   render() {
@@ -20,15 +40,16 @@ class Inventory extends Component {
       
       <div className="inventory" style={backgroundStyle}>
         <div className="inventory-grid">
+
+        { this.state.items ? 
+        this.state.items.map((value, index) => {
+        return <div key={index} onClick={()=>this.props.onInventoryClick(value)}>
         
-        <div onClick={() => this.props.onInventoryClick('book')}>
-            <img src= {process.env.PUBLIC_URL + '/Images/scroll_book.png'} className="inventory-item" alt=""/>
+          <img src= {process.env.PUBLIC_URL + `/Images/${value}.png`} className="inventory-item" alt=""/>
+        
         </div>
-
-        <div onClick={() => this.props.onInventoryClick('scroll')}>
-            <img src= {process.env.PUBLIC_URL + '/Images/clue_scroll.png'} className="inventory-item" alt=""/>
-        </div>
-
+        
+        }) : null}
 
         </div>
       </div>

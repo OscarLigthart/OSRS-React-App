@@ -3,14 +3,14 @@ import React, { Component } from "react";
 import './Base.css';
 import Game from './Game/Game';
 import Quiz from './Quiz/Quiz';
+import Intro from './Intro/Intro';
 
 /**
  *  This is the base of the app when playing.
  *  It is also responsible for all communications between the different components.
  *  It acts as a hub and controls all components.
  */
-
-class Layout extends Component {
+class Base extends Component {
   /**
    *  Layout clas
    * @param {*} props 
@@ -22,7 +22,7 @@ class Layout extends Component {
 
     this.state = {
       show: true,
-      state: 'game',
+      state: 'intro',
       teleportAnimation: false,
     }
 
@@ -63,9 +63,14 @@ class Layout extends Component {
   render() {
     const state = () => {
       switch(this.state.state) {
-
+        
+        case "intro":  return <Intro onTeleport={this.teleportHandler}/>;
         case "game":   return <Game onTeleport={this.teleportHandler}/>;
-        case "wizard":   return <Quiz checkpointReached={this.quizCheckpoint} onTeleport={this.teleportHandler} onCheckpoint={this.quizHandler}/>;
+
+        case "wizard":   return <Quiz 
+          checkpointReached={this.quizCheckpoint} 
+          onTeleport={this.teleportHandler} 
+          onCheckpoint={this.quizHandler}/>;
 
 
         default:      return <h1>No project match</h1>
@@ -89,4 +94,4 @@ class Layout extends Component {
   }
 }
  
-export default Layout;
+export default Base;
