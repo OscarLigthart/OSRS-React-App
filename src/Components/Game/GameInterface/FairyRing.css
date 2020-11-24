@@ -1,0 +1,136 @@
+.fairy {
+    display: grid;
+    grid-template-rows: 15% 70% 15%;
+    height: 100%;
+}
+
+.fairy-ring {
+
+    box-sizing: border-box;
+
+    height: 100%;
+    display:grid;
+    grid-gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.fairy-ring-cycle {
+
+    width: 100px;
+    height: 100px;
+    background: #81623a;
+    border-radius: 50%;
+    border: 5px solid #523a15;
+
+    position:relative;
+}
+
+/* Styling of a single letter */
+.fairy-ring-letter {
+    /* layout */
+    display: grid;
+    align-items: center;
+
+    height: 45px;
+    width: 45px;
+    background: 	#c24e46;
+
+    /* starting pos */
+    top: 27.5px;
+    left: 27.5px;
+
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid #d2cbc2;
+
+    animation: rotate-left 6s infinite linear;
+}
+
+.fairy-ring-letter:nth-child(2) {
+    animation-delay: -1.5s;
+}
+
+.fairy-ring-letter:nth-child(3) {
+    animation-delay: -3s;
+}
+
+.fairy-ring-letter:nth-child(4) {
+    animation-delay: -4.5s;
+}
+
+.fairy-ring-letter.pause {
+    animation-play-state: paused;
+}
+
+
+/* Rotate left */
+@keyframes rotate-left {
+    0% { 
+      transform: rotate(0) translateX(40px) rotate(0); 
+    }
+    100% { 
+      transform: rotate(360deg) translateX(40px) rotate(-360deg); 
+    }
+}
+
+/* Rotate right */
+@keyframes rotate-right {
+    0% { 
+        transform: rotate(0) translateX(40px) rotate(0); 
+    }
+    100% { 
+        transform: rotate(-360deg) translateX(40px) rotate(360deg); 
+    }
+}
+
+
+
+.ring-overlay{
+    position:   relative;
+    top:        60px;
+    left:       -24px;
+    width:      150px;
+    height:     60px;
+    background: #5b462a;
+    clip-path: polygon(0% 0%, 0% 100%, 35% 100%, 35% 15%, 65% 15%, 65% 85%, 35% 85%, 35% 100%, 100% 100%, 100% 0%);
+
+    border-top: 2px solid #4e3711;   
+    border-bottom: 2px solid #4e3711;   
+}
+
+.ring-overlay.left {
+    border-left: 2px solid #4e3711;   
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.ring-overlay.right {
+    border-right: 2px solid #4e3711;  
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px; 
+}
+
+
+.letter{
+    font-size: 26px;
+    
+}
+
+.fairy-title{
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    justify-self: center;
+    padding: 0 4rem;
+    font-size: 14pt;
+}
+
+.fairy-teleport{
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    justify-self: center;
+    padding: 0 4rem;
+    font-size: 14pt;
+}
+

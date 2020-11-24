@@ -1,0 +1,90 @@
+{
+    "start": [
+        {
+            "type":     "dialogue",
+            "speaker":  "gnome-professor",
+            "text":     "Well hello there Guido, greetings from the land of Gielinor!"
+        },{
+            "type":     "dialogue",
+            "speaker":  "gnome-professor",
+            "text":     "I'm sorry to say Sinterklaas couldn't make it because he is stuck at home."
+        },{
+            "type":     "dialogue",
+            "speaker":  "gnome-professor",
+            "text":     "Instead, he asked me to get you a present."
+        },{
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "Aah that's sweet of you. Thank you!"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "gnome-professor",
+            "text":     "Not so fast! Where's the fun in that?"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "gnome-professor",
+            "text":     "No... I think you need to earn this present."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "gnome-professor",
+            "text":     "Therefore, I have created a challenge for you!"
+        },
+        {
+            "type":     "item",
+            "item":     "clue_scroll",
+            "text":     "The gnome-professor hands over a clue scroll"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "gnome-professor",
+            "text":     "If you manage to solve this clue, you will earn your reward!"
+        }, 
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "Aah a clue scroll! That's my favourite part of this game!"
+        }, 
+        {
+            "type":     "dialogue",
+            "speaker":  "gnome-professor",
+            "text":     "I'm delighted to hear that!"
+        }, 
+        {
+            "type":     "dialogue",
+            "speaker":  "gnome-professor",
+            "text":     "Don't worry about walking around for hours, I will provide you with means of transportation."
+        }, 
+        {
+            "type":     "item",
+            "item":     "scroll_book",
+            "text":     "The gnome-professor takes a book from his bag."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "How is this supposed to be a means of transportation?!"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "gnome-professor",
+            "text":     "I have a weird feeling that you have used one of these before. Anyway, you'll figure it out!"   
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "gnome-professor",
+            "text":     "Good luck, and let the Games of Gielinor begin!!"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "gnome-professor",
+            "text":     "Why does that sound familiar?"
+        },
+        {
+            "type":     "end"
+        }
+    ]
+
+}

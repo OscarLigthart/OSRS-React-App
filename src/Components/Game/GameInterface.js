@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import './GameInterface.css';
 import Teleport from './GameInterface/Teleport';
 import Scroll from './GameInterface/Scroll';
+import FairyRing from './GameInterface/FairyRing';
 
 class GameInterface extends Component {
 
@@ -16,7 +17,6 @@ class GameInterface extends Component {
   }
 
   show = (item) => {
-  
     item === this.state.show ? this.setState({show: 'nothing'}) : this.setState({show: item});
   }
 
@@ -40,6 +40,8 @@ class GameInterface extends Component {
                 return <Teleport onTeleportClick={this.teleportHandler}/>;
               case 'clue_scroll':
                 return <Scroll/>;
+              case 'dramen_staff':
+                return <FairyRing onTeleport={this.teleportHandler}/>
               default:
                 return null;
             }

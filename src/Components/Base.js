@@ -4,6 +4,12 @@ import './Base.css';
 import Game from './Game/Game';
 import Quiz from './Quiz/Quiz';
 import Intro from './Intro/Intro';
+import Zanaris from './Minigame/Zanaris';
+
+// Debug for giving items
+import ItemList from './Tools/Inventory/ItemList'
+
+ItemList.push('dramen_staff')
 
 /**
  *  This is the base of the app when playing.
@@ -22,7 +28,7 @@ class Base extends Component {
 
     this.state = {
       show: true,
-      state: 'intro',
+      state: 'game',
       teleportAnimation: false,
     }
 
@@ -72,6 +78,7 @@ class Base extends Component {
           onTeleport={this.teleportHandler} 
           onCheckpoint={this.quizHandler}/>;
 
+        case "zanaris": return <Zanaris/>
 
         default:      return <h1>No project match</h1>
       }
