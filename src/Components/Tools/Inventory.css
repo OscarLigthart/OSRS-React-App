@@ -22,11 +22,11 @@
     display: grid;
 
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows:     repeat(6, 15%);
+    grid-template-rows:    repeat(6, 13vh);
 
     grid-gap: .5rem;
 
-    padding: 1rem 1rem;
+    padding: 1rem;
     box-sizing: border-box;
 }
 

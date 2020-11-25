@@ -17,16 +17,21 @@ class Inventory extends Component {
     // check if a layout is given. horizontal is default
     this.layout = props ? props.layout ? props.layout : 'horizontal' : 'horizontal';
 
+    // boolean to temporarily stop a user from clicking
+    this.stopClick = false;
+
     // bind methods
     this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
+    this.clear = this.clear.bind(this);
+    this.stopClicks = this.stopClicks.bind(this);
   }
 
   // Adds the item to the state item array
-  addItem = item => {
+  addItem = (item, index) => {
 
     // append the item to the currently shown item list
-    ItemList.push(item);
+    if (ItemList.length < 12) typeof(index) === 'undefined' ? ItemList.push(item) : ItemList.splice(index, 0, item);
 
     // reload the inventory
     this.setState({
@@ -34,22 +39,134 @@ class Inventory extends Component {
     });
   }
 
-  removeItem = item => {
+  /**
+   * Removes a certain item within the inventory
+   * 
+   * If the index is given, it is not required to give the item
+   * If the index is not given, the final item occurence will be removed
+   * 
+   * @param {} item   item to be removed
+   * @param {} index  index to be removed
+   */
+  removeItem = (item, index) => {
 
-    // get indices of this element
-    let indices = ItemList.map((elm, idx) => elm === item ? idx : '').filter(String);
 
-    // only remove if there is something to remove
-    if (!indices.length) return;
+    if (typeof(item) != 'string') index = item;
 
-    // get max index
-    let index = Math.max.apply(null, indices);
+    // if index is not given we simply remove the final position
+    if (typeof(index) === 'undefined') {
 
-    ItemList.splice(index);
+      // get indices of this element
+      let indices = ItemList.map((elm, idx) => elm === item ? idx : '').filter(String);
 
+      // only remove if there is something to remove
+      if (!indices.length) return;
+
+      // get max index
+      index = Math.max.apply(null, indices);
+    }
+
+    // splice list
+    ItemList.splice(index, 1);
+
+    // Refresh state
     this.setState({
       items: ItemList
     });
+  }
+
+  /**
+   * Method to clear the inventory of a certain item
+   * @param {} item 
+   */
+  clear = (item) => {
+
+    let filtered = ItemList.filter(function(value, index, arr){ 
+      return value != item;
+    });
+
+    // Set length to 0
+    ItemList.length = 0;
+
+    // this is pretty weird but we can't overwrite the ItemList, hence this code
+    filtered.map(x => ItemList.push(x));
+
+    // Refresh state
+    this.setState({
+      items: ItemList
+    });
+  }
+
+  /**
+   *  Method to stop the click handling
+   */
+  stopClicks = () => {
+
+    // stop the clicking
+    this.stopClick = true;
+  }
+
+  /**
+   * Method to handle a click on an Inventory item
+   * @param {} value 
+   */
+  handleClick = (elem, value) => {
+
+    if (this.stopClick) return;
+
+    // bubble the clicking event
+    if (this.props.onInventoryClick) this.props.onInventoryClick(value);
+
+    // get index
+    let index = Array.from(elem.target.parentNode.parentNode.children).indexOf(elem.target.parentNode); 
+
+    // if an eclectic impling is clicked, it must be turned into another item
+    if (value === 'eclectic_impling_jar') {
+
+      // remove this impling
+      this.removeItem(index);
+
+      // open the impling
+      this.openImpling(index);
+    }
+
+    // simply remove the items that are useless on click
+    if (['bucket', 'burnt_meat', 'sawdust', 'old_boot'].includes(value)) this.removeItem(index);
+  }
+
+  /** 
+   * Method to open an impling
+   */
+  openImpling = (index) => {
+
+    // get loot 
+    let item = this.loot();
+
+    // if it is the clue scroll, let the parent know
+    if (item == 'clue_scroll' && this.props.onClueScroll) this.props.onClueScroll('clue_scroll');
+    
+    // add the item
+    this.addItem(item, index);
+  }
+
+  /**
+   *  Method to open up an impling jar
+   */
+  loot = () => {
+
+    // let the rng decide the faith
+    let rng = Math.floor(Math.random() * 25);
+    
+    // DEBUG
+    rng = 0
+
+    // return appropriate item
+    if (rng == 0) return 'clue_scroll';
+    else if (rng < 6) return 'bucket';
+    else if (rng < 12) return 'sawdust';
+    else if (rng < 18) return 'old_boot';
+    else return 'burnt_meat';
+
   }
 
   render() {
@@ -65,7 +182,7 @@ class Inventory extends Component {
 
         { this.state.items ? 
         this.state.items.map((value, index) => {
-        return <div key={index} onClick={()=>this.props.onInventoryClick(value)}>
+        return <div key={index} onClick={e=>this.handleClick(e, value)}>
         
           <img src= {process.env.PUBLIC_URL + `/Images/${value}.png`} className="inventory-item" alt=""/>
         

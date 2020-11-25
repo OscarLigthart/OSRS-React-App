@@ -78,6 +78,77 @@
         {
             "type":     "end"
         }
+    ],
+
+    "complete": [
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "Aaah! It seems like you managed to retrieve a new clue scroll from an impling!"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "HOW ARE YOU ABLE TO CARRY TWO CLUE SCROLLS??!"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "Uuuhm.. I don't know? I simply opened the jar and got a new one."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "THAT IS AGAINST THE RULES!!"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "Please hand it over to me so I can dispose of it."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "Are you sure I won't be needing this scroll as well?"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "Your new task is written on the new clue scroll, please hand it over."
+        },
+        {
+            "type":     "item-remove",
+            "item":     "clue_scroll",
+            "text":     "You hand over the scroll and the sheep calms down"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "I'm afraid the implings can't leave Zanaris either, they steal all sorts of stuff from people. We don't want to get in trouble again."
+        },
+        {
+            "type":     "item-clear",
+            "item":     "eclectic_impling_jar",
+            "text":     "You give the impling jars to the sheep. Good riddance."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "Aaah now that that has been Swampleticsd, congratulations on obtaining your next step!"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "I wish you the best of luck, and say hi to the shepherd for me."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "Eeeehm... okay I guess?"
+        },
+        {
+            "type":     "end"   
+        }
     ]
 
 }

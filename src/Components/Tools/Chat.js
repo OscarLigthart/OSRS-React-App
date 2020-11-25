@@ -47,8 +47,14 @@ class Chat extends Component {
    * Method to pass an item that is given to the player into the inventory
    * @param {} item 
    */
-  handleItem = (item) => {
-    this.inventory.current.addItem(item);
+  handleItem = (item, action) => {
+
+    switch(action){
+      case 'add':     this.inventory.current.addItem(item);     break;
+      case 'remove':  this.inventory.current.removeItem(item);  break;
+      case 'clear':   this.inventory.current.clear(item);       break;
+      default:        return;
+    }
   };
 
   inventoryHandler = (event) => {

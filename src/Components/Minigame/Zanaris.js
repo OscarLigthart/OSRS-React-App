@@ -19,20 +19,20 @@ class Zanaris extends Component {
 
     this.chat = React.createRef();
 
+    // have we reached the checkpoint yet?
+    this.checkpoint = props.checkpointReached;
+
+    this.checkpoint ? this.data = {
+      stage: 'complete',
+    } : this.data = {
+      stage: 'start'
+    };
+
     /**
      *  There should be a big data object here that holds the entire dialogue and its specs
      *  This will be fed to the Chatbox component. It is contained in a json.
      */
     this.conversation = json;
-
-  }
-
-  /**
-   * Method to handle the choice
-   * @param {str} choice  The current stage within the dialogue will be given
-   */
-  handleChoice = (choice) => {
-
   }
 
   /**
@@ -40,7 +40,7 @@ class Zanaris extends Component {
    * @param {} event 
    */
   handleEvent = event => {
-    if (event === 'end') this.props.onTeleport('puropuro');
+    if (event === 'end') this.props.onTeleport(this.checkpoint ? 'game' : 'puropuro');
   }
 
   render() {
@@ -52,6 +52,7 @@ class Zanaris extends Component {
         {/* Load the chat with the conversation */}
         <Chat 
           ref={this.chat} 
+          data={this.data}
           conversation={this.conversation} 
           onEvent={this.handleEvent}
         />

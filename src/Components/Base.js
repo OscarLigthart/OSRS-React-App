@@ -8,9 +8,9 @@ import Zanaris from './Minigame/Zanaris';
 import PuroPuro from './Minigame/PuroPuro';
 
 // Debug for giving items
-import ItemList from './Tools/Inventory/ItemList'
+// import ItemList from './Tools/Inventory/ItemList'
 
-ItemList.push('dramen_staff', 'clue_scroll', 'scroll_book')
+// ItemList.push('dramen_staff', 'clue_scroll', 'scroll_book', 'eclectic_impling_jar', 'eclectic_impling_jar', 'eclectic_impling_jar', 'eclectic_impling_jar', 'eclectic_impling_jar', 'eclectic_impling_jar', 'eclectic_impling_jar')
 
 /**
  *  This is the base of the app when playing.
@@ -29,12 +29,13 @@ class Base extends Component {
 
     this.state = {
       show: true,
-      state: 'puropuro',
+      state: 'intro',
       teleportAnimation: false,
     }
 
     this.quizCheckpoint = false;
 
+    this.minigameComplete = false;
   }
 
   // handler for teleport commands, will switch screens
@@ -67,6 +68,15 @@ class Base extends Component {
 
   quizHandler = () => { this.quizCheckpoint = true };
 
+  scrollHandler = () => {
+
+    // let the world know the minigame has been completed
+    this.minigameComplete = true;
+
+    // teleport back
+    this.teleportHandler('zanaris')
+  }
+
   render() {
     const state = () => {
       switch(this.state.state) {
@@ -79,9 +89,9 @@ class Base extends Component {
           onTeleport={this.teleportHandler} 
           onCheckpoint={this.quizHandler}/>;
 
-        case "zanaris": return <Zanaris onTeleport={this.teleportHandler}/>
+        case "zanaris": return <Zanaris onTeleport={this.teleportHandler} checkpointReached={this.minigameComplete}/>
 
-        case "puropuro": return <PuroPuro/>
+        case "puropuro": return <PuroPuro onClueScroll={this.scrollHandler}/>
 
         default:      return <h1>No project match</h1>
       }

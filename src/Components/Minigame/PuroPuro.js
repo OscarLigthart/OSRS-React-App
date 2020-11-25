@@ -58,7 +58,7 @@ class PuroPuro extends Component {
     if (imp > 11) return;
 
     // determine whether to show text or imp
-    let appear = Math.random() > 0.5 ? this.imps[imp] : this.flashes[imp];
+    let appear = Math.random() > 0 ? this.imps[imp] : this.flashes[imp];
     
     // safety check
     if (!appear) return;
@@ -74,7 +74,6 @@ class PuroPuro extends Component {
     this.registerClick = true;
 
     setTimeout(disappear, 1500); // 400 as default
-
   }
 
   // Method to catch an imp
@@ -93,19 +92,26 @@ class PuroPuro extends Component {
     else return;
   }
 
+  /**
+   *  Method to handle an incoming scroll
+   */
+  handleScroll = () => {
+
+    // stop the clicks since we will be teleported out of here
+    this.inventory.current.stopClicks();
+
+    // Teleport back to zanaris but this time we want to have different dialogue
+    setTimeout(() => { this.props.onClueScroll('zanaris'); }, 500);
+  }
+
   render() {
 
+    // Run the engine
     this.engine();
     
     const backgroundStyle = {
         backgroundImage: 'url(' + process.env.PUBLIC_URL + '/Images/puropurobackground.png)',
     };
-
-
-    const eclecticImp = {
-        backgroundImage: 'url(' + process.env.PUBLIC_URL + '/Images/eclectic_impling.png)',
-    };
-  
 
     return (
       
@@ -140,7 +146,7 @@ class PuroPuro extends Component {
 
         </div>
 
-        <Inventory ref={this.inventory} layout='vertical'/>
+        <Inventory ref={this.inventory} layout='vertical' onClueScroll={this.handleScroll}/>
       </div>
     );
   }

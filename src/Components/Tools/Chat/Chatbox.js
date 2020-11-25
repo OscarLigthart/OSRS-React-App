@@ -80,7 +80,10 @@ class Chatbox extends Component {
     }
 
     // check if we have an item do deal with
-    if (this.conversation[this.stage][this.step].type === 'item') this.props.bubbleItem(this.conversation[this.stage][this.step].item);
+    if (this.conversation[this.stage][this.step].type === 'item') this.props.bubbleItem(this.conversation[this.stage][this.step].item, 'add');
+    if (this.conversation[this.stage][this.step].type === 'item-remove') this.props.bubbleItem(this.conversation[this.stage][this.step].item, 'remove');
+    if (this.conversation[this.stage][this.step].type === 'item-clear') this.props.bubbleItem(this.conversation[this.stage][this.step].item, 'clear');
+
 
     // load next step
     this.setState(this.conversation[this.stage][this.step]);
@@ -126,6 +129,10 @@ class Chatbox extends Component {
     this.step = -1;
   }
 
+  /**
+   * Method to handle the input entered by the user
+   * @param {} event 
+   */
   handleSubmit = (event) => {
 
     // prevent default form behaviour
