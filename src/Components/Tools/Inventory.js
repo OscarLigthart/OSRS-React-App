@@ -14,10 +14,12 @@ class Inventory extends Component {
       items : ItemList
     }
 
+    // check if a layout is given. horizontal is default
     this.layout = props ? props.layout ? props.layout : 'horizontal' : 'horizontal';
 
     // bind methods
     this.addItem = this.addItem.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
   // Adds the item to the state item array
@@ -27,6 +29,24 @@ class Inventory extends Component {
     ItemList.push(item);
 
     // reload the inventory
+    this.setState({
+      items: ItemList
+    });
+  }
+
+  removeItem = item => {
+
+    // get indices of this element
+    let indices = ItemList.map((elm, idx) => elm === item ? idx : '').filter(String);
+
+    // only remove if there is something to remove
+    if (!indices.length) return;
+
+    // get max index
+    let index = Math.max.apply(null, indices);
+
+    ItemList.splice(index);
+
     this.setState({
       items: ItemList
     });

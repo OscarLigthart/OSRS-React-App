@@ -36,6 +36,7 @@
     color: yellow;
     font-size: 20pt;
     left: 2.5%;
+    display: none;
 }
 
 .puro-puro-imp {
@@ -44,4 +45,5 @@
     left: 25%;
     height: 100%;
     width: 50%;
+    display:none;
 }
