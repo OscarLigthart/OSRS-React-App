@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Chat from '../Tools/Chat';
 
-
+var json = require('./zanaris.json');
 /**
  *  This component is responsible for building the quiz
  */
@@ -23,7 +23,7 @@ class Zanaris extends Component {
      *  There should be a big data object here that holds the entire dialogue and its specs
      *  This will be fed to the Chatbox component. It is contained in a json.
      */
-    // this.conversation = json;
+    this.conversation = json;
 
   }
 
@@ -40,7 +40,7 @@ class Zanaris extends Component {
    * @param {} event 
    */
   handleEvent = event => {
-
+    if (event === 'end') this.props.onTeleport('puropuro');
   }
 
   render() {
@@ -52,11 +52,8 @@ class Zanaris extends Component {
         {/* Load the chat with the conversation */}
         <Chat 
           ref={this.chat} 
-          data={this.data} 
           conversation={this.conversation} 
-          onChoice={this.handleChoice} 
           onEvent={this.handleEvent}
-          onItem={()=>{}} // do nothing when user clicks an item
         />
 
       </div>

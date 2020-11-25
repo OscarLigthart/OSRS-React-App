@@ -1,0 +1,83 @@
+{
+    "start": [
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "These teleports are starting to hurt my head..."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "Welcome to Zanaris human, how did you manage to get here?"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "I got a dramen staff from the professor and was told to go here next."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "Aaaah... I see. What is it that you are looking for?"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "I thought you would be able to tell me that."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "Whatever makes you think that? I am just a sheep."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "Well Sinterklaas hired some gnome to put me on a treasure trail instead of just giving me my present."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "What is a Sinterklaas? Not some shepherd with a staff I hope?"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "Wait... treasure trail you said?"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "Well it just so happens that there are some eclectic implings flying around here."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "Rumor has it that they have a chance of dropping a clue scroll!"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "Oh no... not again..."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "Well you look like you are an able hunter, who can catch these implings with his barehands!"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "Is there really no other way...?"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "I'm afraid not, good hunting human!"
+        },
+        {
+            "type":     "end"
+        }
+    ]
+
+}

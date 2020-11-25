@@ -5,11 +5,12 @@ import Game from './Game/Game';
 import Quiz from './Quiz/Quiz';
 import Intro from './Intro/Intro';
 import Zanaris from './Minigame/Zanaris';
+import PuroPuro from './Minigame/PuroPuro';
 
 // Debug for giving items
 import ItemList from './Tools/Inventory/ItemList'
 
-ItemList.push('dramen_staff')
+ItemList.push('dramen_staff', 'clue_scroll', 'scroll_book')
 
 /**
  *  This is the base of the app when playing.
@@ -28,7 +29,7 @@ class Base extends Component {
 
     this.state = {
       show: true,
-      state: 'game',
+      state: 'puropuro',
       teleportAnimation: false,
     }
 
@@ -78,7 +79,9 @@ class Base extends Component {
           onTeleport={this.teleportHandler} 
           onCheckpoint={this.quizHandler}/>;
 
-        case "zanaris": return <Zanaris/>
+        case "zanaris": return <Zanaris onTeleport={this.teleportHandler}/>
+
+        case "puropuro": return <PuroPuro/>
 
         default:      return <h1>No project match</h1>
       }

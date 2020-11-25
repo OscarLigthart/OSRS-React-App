@@ -132,5 +132,13 @@
     justify-self: center;
     padding: 0 4rem;
     font-size: 14pt;
+
+    display: flex;
+    justify-content: space-between;
+    width: 120px;
+}
+
+.wrong-teleport {
+    color: red;
 }
 

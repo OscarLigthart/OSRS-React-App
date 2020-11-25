@@ -14,6 +14,8 @@ class Inventory extends Component {
       items : ItemList
     }
 
+    this.layout = props ? props.layout ? props.layout : 'horizontal' : 'horizontal';
+
     // bind methods
     this.addItem = this.addItem.bind(this);
   }
@@ -39,7 +41,7 @@ class Inventory extends Component {
     return (
       
       <div className="inventory" style={backgroundStyle}>
-        <div className="inventory-grid">
+        <div className={`inventory-grid-${this.layout}`}>
 
         { this.state.items ? 
         this.state.items.map((value, index) => {

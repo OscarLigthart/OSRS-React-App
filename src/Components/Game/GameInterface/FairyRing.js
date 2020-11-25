@@ -8,6 +8,10 @@ class FairyRing extends Component {
 
     super();
 
+    this.state = {
+        teleport: true
+    }
+
     // The rings
     this.firstring = {
         rings: [],
@@ -64,10 +68,24 @@ class FairyRing extends Component {
   handleTeleport = () => {
 
     // check configuration
-    if (this.firstring.letters[this.firstring.current] == 'b' &&
-        this.secondring.letters[this.secondring.current] == 'k' &&
-        this.thirdring.letters[this.thirdring.current] == 's'){
+    if (this.firstring.letters[this.firstring.current] === 'b' &&
+        this.secondring.letters[this.secondring.current] === 'k' &&
+        this.thirdring.letters[this.thirdring.current] === 's'){
         this.props.onTeleport('zanaris')
+    }
+
+    else {
+        this.setState({teleport: false});
+
+        let runCount = 0;
+        
+        let timerId = setInterval(() => {
+            runCount++;
+            if(runCount > 2) clearInterval(timerId);
+        
+            // flip state
+            this.setState({teleport: !this.state.teleport});
+        }, 500);
     }
   }
 
@@ -119,7 +137,11 @@ class FairyRing extends Component {
                 <div className="ring-overlay right"></div>            
             </div>
         </div>
-        <div className="fairy-teleport" onClick={this.handleTeleport} style={backgroundStyle}>Teleport</div>
+        <div className="fairy-teleport" onClick={this.handleTeleport} style={backgroundStyle}>
+            {!this.state.teleport ? <span className="wrong-teleport">X</span> : <span/>}
+            <span>Teleport</span>
+            {!this.state.teleport ? <span className="wrong-teleport">X</span> : <span/>}
+        </div>
       </div>
     );
   }

@@ -4,7 +4,7 @@
 
 }
 
-.inventory-grid {
+.inventory-grid-horizontal {
     height: 100%;
     display: grid;
 
@@ -14,6 +14,19 @@
     grid-gap: .5rem;
 
     padding: .75rem 1.5rem;
+    box-sizing: border-box;
+}
+
+.inventory-grid-vertical {
+    height: 100%;
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows:     repeat(6, 15%);
+
+    grid-gap: .5rem;
+
+    padding: 1rem 1rem;
     box-sizing: border-box;
 }
 
