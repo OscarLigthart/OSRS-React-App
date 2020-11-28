@@ -156,9 +156,6 @@ class Inventory extends Component {
 
     // let the rng decide the faith
     let rng = Math.floor(Math.random() * 25);
-    
-    // DEBUG
-    rng = 0
 
     // return appropriate item
     if (rng == 0) return 'clue_scroll';

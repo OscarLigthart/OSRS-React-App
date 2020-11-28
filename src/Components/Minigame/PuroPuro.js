@@ -58,7 +58,7 @@ class PuroPuro extends Component {
     if (imp > 11) return;
 
     // determine whether to show text or imp
-    let appear = Math.random() > 0 ? this.imps[imp] : this.flashes[imp];
+    let appear = Math.random() > 0.5 ? this.imps[imp] : this.flashes[imp];
     
     // safety check
     if (!appear) return;

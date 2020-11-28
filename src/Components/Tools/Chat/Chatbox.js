@@ -47,6 +47,7 @@ class Chatbox extends Component {
     this.state = this.conversation[this.stage][this.step];
 
     this.input = React.createRef();
+    this.continue = React.createRef();
 
     // bind methods
     this.nextDialogue = this.nextDialogue.bind(this);
@@ -66,8 +67,10 @@ class Chatbox extends Component {
     this.props.bubbleEvent(this.conversation[this.stage][this.step].type);
 
     // do not go to the next step if we are at the end
-    // TODO REMOVE CLICK TO CONTINUE UPON END
-    if (this.conversation[this.stage][this.step].type === 'end' || this.conversation[this.stage][this.step].type === 'complete') return;
+    if (this.conversation[this.stage][this.step].type === 'end' || this.conversation[this.stage][this.step].type === 'complete') {
+      if (this.continue.current) this.continue.current.style.display = 'none'; 
+      return;
+    }
 
     // check if we have a transition to deal with
     if (this.conversation[this.stage][this.step].type === 'transition') {
@@ -177,7 +180,7 @@ class Chatbox extends Component {
               <div className="chatbox-text">{this.state.text}</div>
 
               <div className="chatbox-continue">
-                <span onClick={this.nextDialogue}>Click here to continue</span>
+                <span ref={this.continue} onClick={this.nextDialogue}>Click here to continue</span>
               </div>
             </div>
 
