@@ -11,8 +11,12 @@ class Inventory extends Component {
 
     // load the items in the list
     this.state = {
-      items : ItemList
+      items : ItemList,
+      flash : false
     }
+
+    // create ref for container
+    this.container = React.createRef();
 
     // check if a layout is given. horizontal is default
     this.layout = props ? props.layout ? props.layout : 'horizontal' : 'horizontal';
@@ -25,6 +29,7 @@ class Inventory extends Component {
     this.removeItem = this.removeItem.bind(this);
     this.clear = this.clear.bind(this);
     this.stopClicks = this.stopClicks.bind(this);
+    this.flash = this.flash.bind(this);
   }
 
   // Adds the item to the state item array
@@ -51,7 +56,7 @@ class Inventory extends Component {
   removeItem = (item, index) => {
 
 
-    if (typeof(item) != 'string') index = item;
+    if (typeof(item) !== 'string') index = item;
 
     // if index is not given we simply remove the final position
     if (typeof(index) === 'undefined') {
@@ -82,7 +87,7 @@ class Inventory extends Component {
   clear = (item) => {
 
     let filtered = ItemList.filter(function(value, index, arr){ 
-      return value != item;
+      return value !== item;
     });
 
     // Set length to 0
@@ -133,6 +138,22 @@ class Inventory extends Component {
     // simply remove the items that are useless on click
     if (['bucket', 'burnt_meat', 'sawdust', 'old_boot'].includes(value)) this.removeItem(index);
   }
+  
+  /** 
+   *  Method to flash the inventory such that the user knows what to do 
+   */
+  flash = () => {
+
+    this.setState({
+      flash: true
+    })
+
+    setTimeout(() => {
+      this.setState({
+        flash: false
+      })
+    }, 500);
+  }
 
   /** 
    * Method to open an impling
@@ -143,7 +164,7 @@ class Inventory extends Component {
     let item = this.loot();
 
     // if it is the clue scroll, let the parent know
-    if (item == 'clue_scroll' && this.props.onClueScroll) this.props.onClueScroll('clue_scroll');
+    if (item === 'clue_scroll' && this.props.onClueScroll) this.props.onClueScroll('clue_scroll');
     
     // add the item
     this.addItem(item, index);
@@ -158,9 +179,8 @@ class Inventory extends Component {
     let rng = Math.floor(Math.random() * 25);
 
     // return appropriate item
-    if (rng == 0) return 'clue_scroll';
-    else if (rng < 6) return 'bucket';
-    else if (rng < 12) return 'sawdust';
+    if (rng < 2) return 'clue_scroll';
+    else if (rng < 10) return 'bucket';
     else if (rng < 18) return 'old_boot';
     else return 'burnt_meat';
 
@@ -174,7 +194,9 @@ class Inventory extends Component {
 
     return (
       
-      <div className="inventory" style={backgroundStyle}>
+      <div className={`inventory ${this.state.flash ? 'fadeOut':'fadeIn'}`} style={backgroundStyle} ref={this.container}>
+
+        <div className="flash-screen"/>
         <div className={`inventory-grid-${this.layout}`}>
 
         { this.state.items ? 

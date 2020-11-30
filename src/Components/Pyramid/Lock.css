@@ -1,0 +1,79 @@
+.lock {
+    height:100%;
+}
+
+.lock-container {
+    position: absolute;
+    top: 60px;
+    left: 200px;
+    height: 250px;
+    width: 300px;
+
+    background-size: 100% 100%;
+}
+
+.lockpick-slider {
+    position:   absolute;
+
+    top: 220px;
+    transition: top 500ms ease-in;
+
+    left: 100px;
+
+    height: 3rem;
+    width: 10rem;
+
+    animation: ani 2.5s infinite linear;   
+}
+
+.lockpick {
+    height: 100%;
+    width: 100%;
+    background-size: 100% 100%;
+}
+
+.lockpick-stop {
+    animation-play-state: paused;
+}
+
+.lockpick-up {
+    top: 195px;
+    transition: top 500ms ease-in;
+}
+
+.lock-pins {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-gap: 19px;
+    grid-template-columns: repeat(5, 12px);
+
+    box-sizing: border-box;
+    padding: 0 75px;
+}
+
+.pin {
+    height: 40px;
+    width: 100%;
+    background-size: 100% 100%;
+
+    transform: translateY(90px);
+    transition: transform 500ms ease-in;
+}
+
+.pin-active {
+    transform: translateY(115px);
+    transition: transform 500ms ease-in;
+}
+
+@keyframes ani {
+    0% {
+      left: 75px;
+    }
+    50% {
+      left: 300px;
+    }
+    100% {
+      left: 75px;
+    }
+  }

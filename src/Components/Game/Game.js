@@ -16,6 +16,8 @@ class Game extends Component {
         super();
     
         this.gameInterface = React.createRef();
+
+        this.stage = props.stage;
     }
 
     teleportHandler = (location) => {
@@ -41,7 +43,7 @@ class Game extends Component {
           {/* The left side holds the game interface and the inventory */}
           <div className="game-left">  
 
-            <GameInterface ref={this.gameInterface} onTeleport={this.teleportHandler}/>
+            <GameInterface ref={this.gameInterface} onTeleport={this.teleportHandler} stage={this.stage}/>
 
             <Inventory onInventoryClick={this.inventoryHandler}/>
 

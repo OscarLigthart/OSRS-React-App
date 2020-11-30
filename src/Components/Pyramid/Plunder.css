@@ -1,0 +1,40 @@
+.pyramid-plunder {
+    display:grid;
+    grid-template-columns: 80% 20%;
+    height: 100%;
+}
+
+.pyramid-plunder-game {
+    height: 100%;
+    background-size: 100% 100%;
+}
+
+.pyramid-plunder-grid {
+    height: 100%;
+    display:grid;
+
+    /* Location for chests */
+    grid-template-columns:  repeat(4, 1fr);   
+    grid-template-rows:     repeat(3, 1fr);
+    grid-gap: 1rem;
+
+    box-sizing: border-box;
+    padding: 2rem;
+}
+
+.pyramid-plunder-cell {
+
+}
+
+.pyramid-plunder-chest {
+    height: 100%;
+    width: 100%;
+}
+
+.pyramid-plunder-lock {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 80%;
+}

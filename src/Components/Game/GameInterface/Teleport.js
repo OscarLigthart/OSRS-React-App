@@ -12,7 +12,8 @@ class Teleport extends Component {
     super();
 
     this.teleportAmounts = {
-      wizard: ItemList.includes('dramen_staff') ? 0 : 1
+      wizard: ItemList.includes('dramen_staff') ? 0 : 1,
+      pyramid: props.pyramid
     }
   }
 
@@ -30,6 +31,11 @@ class Teleport extends Component {
             <span className="teleport-title">Wizard's tower</span>
             <img src= {process.env.PUBLIC_URL + '/Images/wizardhat.png'} className="teleport-wizardhat" alt=""/>
             <span className={`teleport-amount ${this.teleportAmounts.wizard ? null : 'negative'}`}>{this.teleportAmounts.wizard}</span>
+          </div>
+          <div className="teleport-pyramid" onClick={() => {if (this.teleportAmounts.pyramid) this.props.onTeleportClick('pyramid')}}>
+            <span className="teleport-title">Pyramid</span>
+            <img src= {process.env.PUBLIC_URL + '/Images/pyramid.png'} className="teleport-pyramid-image" alt=""/>
+            <span className={`teleport-amount ${this.teleportAmounts.pyramid ? null : 'negative'}`}>{this.teleportAmounts.pyramid}</span>
           </div>
         </div>
       </div>

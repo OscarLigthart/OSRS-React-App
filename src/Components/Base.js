@@ -6,6 +6,8 @@ import Quiz from './Quiz/Quiz';
 import Intro from './Intro/Intro';
 import Zanaris from './Minigame/Zanaris';
 import PuroPuro from './Minigame/PuroPuro';
+import Pyramid from './Pyramid/Pyramid';
+import Plunder from './Pyramid/Plunder';
 
 // Debug for giving items
 // import ItemList from './Tools/Inventory/ItemList'
@@ -30,19 +32,37 @@ class Base extends Component {
     this.state = {
       show: true,
       state: 'intro',
+      stage: 'first',
       teleportAnimation: false,
     }
 
+    // milestones
     this.quizCheckpoint = false;
-
     this.minigameComplete = false;
+    this.plunderComplete = false;
   }
 
   // handler for teleport commands, will switch screens
   teleportHandler = (location) => {
+
+    switch(location){
+      case 'wizard': this.setState({
+        stage: 'second',
+        show: false
+      });
+      break;
+
+      case 'zanaris': this.setState({
+        stage: 'third',
+        show: false
+      });
+      break;
+
+      default: this.setState({show: false});
+    }
     
     // 3 time outs, but first create animation
-    this.setState({show: false});
+    // this.setState({show: false});
     
     setTimeout(()=> {
 
@@ -74,7 +94,16 @@ class Base extends Component {
     this.minigameComplete = true;
 
     // teleport back
-    this.teleportHandler('zanaris')
+    this.teleportHandler('zanaris');
+  }
+
+  sceptreHandler = () => {
+
+      // let the world know the pluner has been completed
+      this.plunderComplete = true;
+
+      // teleport back
+      this.teleportHandler('pyramid');
   }
 
   render() {
@@ -82,16 +111,21 @@ class Base extends Component {
       switch(this.state.state) {
         
         case "intro":  return <Intro onTeleport={this.teleportHandler}/>;
-        case "game":   return <Game onTeleport={this.teleportHandler}/>;
+        case "game":   return <Game onTeleport={this.teleportHandler} stage={this.state.stage}/>;
 
         case "wizard":   return <Quiz 
           checkpointReached={this.quizCheckpoint} 
           onTeleport={this.teleportHandler} 
-          onCheckpoint={this.quizHandler}/>;
+          onCheckpoint={this.quizHandler}
+        />;
 
         case "zanaris": return <Zanaris onTeleport={this.teleportHandler} checkpointReached={this.minigameComplete}/>
 
         case "puropuro": return <PuroPuro onClueScroll={this.scrollHandler}/>
+
+        case "pyramid": return <Pyramid onTeleport={this.teleportHandler} checkpointReached={this.plunderComplete}/>
+
+        case "plunder": return <Plunder onSceptre={this.sceptreHandler} chest={Math.floor(Math.random() * Math.floor(12))}/>
 
         default:      return <h1>No project match</h1>
       }

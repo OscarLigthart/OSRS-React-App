@@ -48,6 +48,7 @@ class Chatbox extends Component {
 
     this.input = React.createRef();
     this.continue = React.createRef();
+    this.continue2 = React.createRef();
 
     // bind methods
     this.nextDialogue = this.nextDialogue.bind(this);
@@ -69,6 +70,7 @@ class Chatbox extends Component {
     // do not go to the next step if we are at the end
     if (this.conversation[this.stage][this.step].type === 'end' || this.conversation[this.stage][this.step].type === 'complete') {
       if (this.continue.current) this.continue.current.style.display = 'none'; 
+      if (this.continue2.current) this.continue2.current.style.display = 'none'; 
       return;
     }
 
@@ -236,7 +238,7 @@ class Chatbox extends Component {
                 <div className="chatbox-item-text">{this.state.text}</div>
 
                 <div className="chatbox-continue">
-                  <span onClick={this.nextDialogue}>Click here to continue</span>
+                  <span ref={this.continue2} onClick={this.nextDialogue}>Click here to continue</span>
                 </div>
                 
               </div>

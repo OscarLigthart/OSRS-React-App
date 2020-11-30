@@ -11,6 +11,8 @@ class GameInterface extends Component {
 
     super();
 
+    this.stage = props.stage;
+
     this.state = {
       show: 'nothing'
     }
@@ -37,9 +39,9 @@ class GameInterface extends Component {
           {(() => {
             switch (this.state.show) {
               case 'scroll_book':
-                return <Teleport onTeleportClick={this.teleportHandler}/>;
+                return <Teleport onTeleportClick={this.teleportHandler} pyramid={this.stage === 'third' ? 1 : 0}/>;
               case 'clue_scroll':
-                return <Scroll/>;
+                return <Scroll stage={this.stage}/>;
               case 'dramen_staff':
                 return <FairyRing onTeleport={this.teleportHandler}/>
               default:

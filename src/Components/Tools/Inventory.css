@@ -1,7 +1,27 @@
 .inventory {
     height: 100%;
     background-size: 100% 100%;
+}
 
+.flash-screen {
+    background: red;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 80%;
+
+    height: 100%;
+    width: 20%;
+}
+
+.fadeOut{
+    opacity:0;
+    transition: opacity 1000ms ease-in;
+}
+
+.fadeIn{
+    opacity:1;
+    transition: opacity 1000ms ease-in;
 }
 
 .inventory-grid-horizontal {

@@ -1,0 +1,68 @@
+{
+    "start": [
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "Damn it is really busy over here, and everyone looks exactly the same."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "I wonder how that happened."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "So human, I hear that you are trying to steal my valued scepter."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "Yes but I need it for my house."
+        },
+        {
+            "type":     "end"
+        }
+    ],
+
+    "complete": [
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "Congratulations on finally receiving my sceptre."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "Thanks... If only it was this easy in the real game."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "You should not give up so easily, those who persist will be rewarded."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "Tell that to all the bots over there..."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "Bots? There are no bots allowed in my pyramid."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "Well you should check your security if that is the case..."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "sheep",
+            "text":     "Nonsense! Anyway, I wish you the best of luck on the rest of your adventure."
+        },
+        {
+            "type":     "end"
+        }
+    ]
+}
