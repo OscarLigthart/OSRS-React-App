@@ -22,8 +22,7 @@ class Scroll extends Component {
   render() {
 
     const backgroundStyle = {
-        // backgroundImage: 'url(' + process.env.PUBLIC_URL + '/Images/clue_interface.png)',
-        backgroundImage: 'url(../../../../public/Images/clue_interface.png)',
+        backgroundImage: 'url(' + process.env.PUBLIC_URL + '/Images/clue_interface.png)',
     };
 
     return (

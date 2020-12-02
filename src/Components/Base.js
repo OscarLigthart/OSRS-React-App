@@ -40,7 +40,7 @@ class Base extends Component {
 
     this.state = {
       show: true,
-      state: 'wizard', // default is intro
+      state: 'intro', // default is intro
       stage: 'first',
       teleportAnimation: false,
     }

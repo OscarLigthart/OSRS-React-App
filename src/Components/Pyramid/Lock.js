@@ -104,10 +104,6 @@ class Lock extends Component {
         backgroundImage: 'url(' + process.env.PUBLIC_URL + '/Images/lock.png)',
       };
 
-    const lockpick = {
-        backgroundImage: 'url(' + process.env.PUBLIC_URL + '/Images/lockpick.png)',
-    };
-
     const pin = {
         backgroundImage: 'url(' + process.env.PUBLIC_URL + '/Images/pin.png)',
     }
