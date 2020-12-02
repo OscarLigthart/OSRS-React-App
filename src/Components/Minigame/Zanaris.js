@@ -21,12 +21,14 @@ class Zanaris extends Component {
 
     // have we reached the checkpoint yet?
     this.checkpoint = props.checkpointReached;
-
+    
     this.checkpoint ? this.data = {
       stage: 'complete',
     } : this.data = {
       stage: 'start'
     };
+
+    this.stage = props.stage;
 
     /**
      *  There should be a big data object here that holds the entire dialogue and its specs

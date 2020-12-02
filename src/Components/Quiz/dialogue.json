@@ -260,7 +260,7 @@
         {
             "type": "dialogue",
             "speaker": "professor",
-            "text": "A merchant can place 8 large boxes or 10 smalle boxes into a carton for shipping. In one shipment, he sent a total of 96 boxes. If there are more large boxes than small boxes, how many cartons did he ship?"
+            "text": "A merchant can place 8 large boxes or 10 small boxes into a carton for shipping. In one shipment, he sent a total of 96 boxes. If there are more large boxes than small boxes, how many cartons did he ship?"
         },  
         {
             "type":    "input",

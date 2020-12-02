@@ -36,6 +36,7 @@ class Inventory extends Component {
   addItem = (item, index) => {
 
     // append the item to the currently shown item list
+    // TODO ADD THE FLASH?
     if (ItemList.length < 12) typeof(index) === 'undefined' ? ItemList.push(item) : ItemList.splice(index, 0, item);
 
     // reload the inventory

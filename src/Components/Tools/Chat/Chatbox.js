@@ -44,11 +44,14 @@ class Chatbox extends Component {
     this.stage = this.data ? this.data.stage : 'start';  
 
     // the state will consist of the current conversation object
-    this.state = this.conversation[this.stage][this.step];
+    this.state = Object.assign(this.conversation[this.stage][this.step], { tick: false });
 
     this.input = React.createRef();
     this.continue = React.createRef();
     this.continue2 = React.createRef();
+
+    this.otherSpeaker = React.createRef();
+    this.selfSpeaker = React.createRef();
 
     // bind methods
     this.nextDialogue = this.nextDialogue.bind(this);
@@ -84,14 +87,22 @@ class Chatbox extends Component {
       this.step = 0;
     }
 
-    // check if we have an item do deal with
-    if (this.conversation[this.stage][this.step].type === 'item') this.props.bubbleItem(this.conversation[this.stage][this.step].item, 'add');
-    if (this.conversation[this.stage][this.step].type === 'item-remove') this.props.bubbleItem(this.conversation[this.stage][this.step].item, 'remove');
-    if (this.conversation[this.stage][this.step].type === 'item-clear') this.props.bubbleItem(this.conversation[this.stage][this.step].item, 'clear');
+    // The below needs to wait for ticking speed, so we set the state here to change the layout and then we perform the actions
+    this.setState({ tick: true });
 
 
-    // load next step
-    this.setState(this.conversation[this.stage][this.step]);
+    setTimeout(() => {
+
+      // check if we have an item do deal with
+      if (this.conversation[this.stage][this.step].type === 'item') this.props.bubbleItem(this.conversation[this.stage][this.step].item, 'add');
+      if (this.conversation[this.stage][this.step].type === 'item-remove') this.props.bubbleItem(this.conversation[this.stage][this.step].item, 'remove');
+      if (this.conversation[this.stage][this.step].type === 'item-clear') this.props.bubbleItem(this.conversation[this.stage][this.step].item, 'clear');
+
+      // load next step
+      this.setState(Object.assign(this.conversation[this.stage][this.step], { tick: false}));
+
+      if (this.input.current) this.input.current.focus(); 
+    }, 750);
   }
   
   /**
@@ -104,6 +115,16 @@ class Chatbox extends Component {
     this.setState(conversation);
     this.step = 0;
     this.conversation = conversation;
+  }
+
+  /**
+   * Method to uppercase the name and replace - with spaces to make it look nice
+   * @param {*} name 
+   */
+  convertName = name => {
+
+    let newName = name.charAt(0).toUpperCase() + name.slice(1);
+    return newName.replace('-',' ')
   }
 
   /**
@@ -173,20 +194,25 @@ class Chatbox extends Component {
         
           <div className={`chatbox-${speaker()}-display`}>
 
-            { speaker() === "other" ? <img src= {process.env.PUBLIC_URL + `/Gifs/${this.state.speaker}.gif`} className="chatbox-head chatbox-head-right" alt=""/> : null}
+            { speaker() === "other" ? <img src= {process.env.PUBLIC_URL + `/Gifs/${this.state.speaker}.gif`} ref={this.otherSpeaker} className="chatbox-head chatbox-head-right" alt=""/> : null}
 
             <div className="chatbox-text-display">
           
-              <div className="chatbox-title">{this.state.speaker}</div>
+              <div className="chatbox-title">{this.convertName(this.state.speaker)}</div>
 
               <div className="chatbox-text">{this.state.text}</div>
 
               <div className="chatbox-continue">
-                <span ref={this.continue} onClick={this.nextDialogue}>Click here to continue</span>
+                {
+                  this.state.tick ? 
+                  <span className="chatbox-continue-white">Please wait...</span>
+                  :
+                  <span ref={this.continue} onClick={this.nextDialogue}>Click here to continue</span>
+                }
               </div>
             </div>
 
-            {this.state.speaker === 'guido' ? <img src= {process.env.PUBLIC_URL + '/Gifs/guido.gif'} className="chatbox-head" alt=""/> : null}
+            {this.state.speaker === 'guido' ? <img src= {process.env.PUBLIC_URL + '/Gifs/guido.gif'} ref={this.selfSpeaker} className="chatbox-head" alt=""/> : null}
 
           </div>
 
@@ -201,7 +227,13 @@ class Chatbox extends Component {
           {this.state.type === "choice" ? 
             <div className="chatbox-choice-display">
             
-              <div className="chatbox-title">Select an option</div>
+              <div className="chatbox-title">
+                <div className="chatbox-choice-title-grid">
+                  <img src= {process.env.PUBLIC_URL + '/Images/sword.png'} className="chatbox-sword" alt=""/>
+                  <span className="chatbox-choice-title">Select an option</span>
+                  <img src= {process.env.PUBLIC_URL + '/Images/sword.png'} className="chatbox-sword img-hor" alt=""/>
+                </div>
+              </div>
               
               <div className="chatbox-choices">
                 
@@ -238,7 +270,12 @@ class Chatbox extends Component {
                 <div className="chatbox-item-text">{this.state.text}</div>
 
                 <div className="chatbox-continue">
+                {
+                  this.state.tick ? 
+                  <span className="chatbox-continue-white">Please wait...</span>
+                  :
                   <span ref={this.continue2} onClick={this.nextDialogue}>Click here to continue</span>
+                }
                 </div>
                 
               </div>

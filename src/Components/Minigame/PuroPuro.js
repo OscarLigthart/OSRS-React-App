@@ -46,10 +46,10 @@ class PuroPuro extends Component {
         self.showImpling(Math.floor(Math.random() * (11 - 0 + 1) + 0))
 
         // set timer for next imp
-        setTimeout(spawner, 2000 + Math.random() * 4000);
+        setTimeout(spawner, 2000 + Math.random() * 2000);
       }
       
-    setTimeout(spawner, 3000);
+    setTimeout(spawner, 2000);
   }
 
   showImpling = (imp) => {
@@ -58,7 +58,7 @@ class PuroPuro extends Component {
     if (imp > 11) return;
 
     // determine whether to show text or imp
-    let appear = Math.random() > 0.5 ? this.imps[imp] : this.flashes[imp];
+    let appear = Math.random() > 0.4 ? this.imps[imp] : this.flashes[imp];
     
     // safety check
     if (!appear) return;
@@ -73,7 +73,7 @@ class PuroPuro extends Component {
     // register the click
     this.registerClick = true;
 
-    setTimeout(disappear, 1500); // 400 as default
+    setTimeout(disappear, 700); // 400 as default
   }
 
   // Method to catch an imp

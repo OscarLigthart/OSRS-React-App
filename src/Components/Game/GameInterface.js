@@ -44,6 +44,8 @@ class GameInterface extends Component {
                 return <Scroll stage={this.stage}/>;
               case 'dramen_staff':
                 return <FairyRing onTeleport={this.teleportHandler}/>
+              case 'casket':
+                return <Scroll stage={'final'}/>;
               default:
                 return null;
             }

@@ -4,6 +4,7 @@ import './App.css';
 import './styles.css';
 
 import Base from "./Components/Base";
+import Start from "./Start";
 
 /**
  *  The main component of this App, that will be responsible for loading all subsequent
@@ -20,21 +21,29 @@ class App extends Component {
     // initialize this components state
     this.state = {
         layoutMode: this.getLayoutMode(),
+        start: false
     };
 
     // create resize handler
     this.onResize = this.onResize.bind(this);
-   
+
+    // container ref
+    this.gameContainer = React.createRef();
   }
 
   // add listeners when component is mounted 
-  componentDidMount() { window.addEventListener('resize', this.onResize); }
+  componentDidMount() {
+    window.addEventListener('resize', this.onResize); 
+    this.onResize();
+  }
 
   // remove listeners when component is unmounted
   componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
 
   // handle resizes of the screen
   onResize() {
+
+      this.changeScreen(this.getLayoutMode())
       this.setState({
           layoutMode: this.getLayoutMode(),
       });
@@ -54,29 +63,81 @@ class App extends Component {
       'landscape'
   }
 
+  changeScreen = layout => {
+
+    if (!this.gameContainer.current) return;
+    if (layout === 'landscape'){
+      // show the container
+      this.gameContainer.current.style.display = 'block';
+    }
+    else {
+      // show the container
+      this.gameContainer.current.style.display = 'none';
+    }
+  }
+
+  startGame = () => {
+
+    console.log(this.getLayoutMode())
+    // set the state
+    this.setState({start: true, layoutMode: this.getLayoutMode()});
+
+  }
+
   render(){
   return (
     <div className="App">
-      
-      {this.state.layoutMode === 'landscape' ? 
 
-        // the page loaded on landscape will be the correct one,
-        // where we will install the app
-        <Base/>
+      {this.state.start ?
 
-          : 
+        <div className="App">
+          {/* Run start here, if done change state to go to app */}
+          {/*  style={{display: 'none'}} */}
+          <div className="App-container" ref={this.gameContainer} style={this.state.layoutMode === 'portrait' ? {display: 'none'} : {display: 'block'}}> 
+            <Base/>
+          </div>
+          
+          {this.state.layoutMode === 'landscape' ? 
 
-        // if it is portrait, user should put the phone to landscape mode
-        this.state.layoutMode === 'portrait' ?
+            // on landscape show nothing, as the above div will just be shown
+            // we do this such that the Base component will not be reloaded and progress will not be lost
+            null
 
-        <div className="screen-warning">
-          <p>Please turn your phone to landscape mode</p>
+              : 
+
+            /* // if it is portrait, user should put the phone to landscape mode */
+            this.state.layoutMode === 'portrait' ?
+
+            // TODO IMPROVE THIS
+            <div className="screen-warning">
+              <div className="screen-warning-text"><p>Please turn your phone to landscape mode</p></div>
+              <img 
+                  src= {process.env.PUBLIC_URL + `/Gifs/quest_cape.gif`} 
+                  className="screen-warning-video"
+                  alt=""
+              />
+
+              <img 
+                src= {process.env.PUBLIC_URL + `/Images/change_screen.png`} 
+                className="screen-warning-change"
+                alt=""
+              />
+
+            </div>
+
+            // otherwise it is desktop
+            :
+            <div className="screen-warning">This app is built for mobile phone!</div>
+          }
         </div>
 
-        // otherwise it is desktop
         :
-        <div className="screen-warning">This app is built for mobile phone!</div>
-      }
+          <div>
+          <Start onStart={this.startGame}/>
+          {/* <div className="App-container" ref={this.gameContainer}></div> */}
+          </div>
+        }
+      
     </div>
   );
   }

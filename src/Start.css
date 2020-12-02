@@ -1,0 +1,25 @@
+.start{
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.gedicht-section {
+    margin-bottom: 3rem;
+}
+
+.start-button {
+    box-shadow: inset 0px 1px 0px 0px #a6827e;
+    background: linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
+    background-color: #7d5d3b;
+    border-radius: 3px;
+    border: 1px solid #54381e;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #4d3534;
+
+    margin-bottom: 1rem;
+    font-size: 16pt;
+}

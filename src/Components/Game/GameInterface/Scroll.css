@@ -13,3 +13,27 @@
     padding: 0 4rem;
     box-sizing: border-box;
 }
+
+.clue-scroll-reward {
+    height: 55vh;
+    /* height: 100%; */
+    display: grid;
+
+    grid-template-columns: 40% 50%;
+
+    padding: 2rem;
+    box-sizing: border-box;
+
+    justify-items: center;
+    align-items: center;
+}
+
+.clue-scroll-chest {
+    height: 60%;
+    width:  60%;
+}
+
+.clue-scroll-picture {
+    height: 100%;
+    width:  100%;
+}

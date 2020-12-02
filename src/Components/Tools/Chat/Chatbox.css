@@ -1,6 +1,6 @@
 .chatbox {
     background-size: 100% 100%;
-    font-size: 18px;
+    font-size: 16pt;
 }
 
 /* 
@@ -137,6 +137,21 @@ All the styles within the chatbox
     text-shadow: 0px 1px 0px #4d3534;
 }
 
+.chatbox-choice-title-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.chatbox-choice-title {
+    margin: 0 3rem;
+}
+
+.chatbox-sword {
+    height: 5vh;
+    width: 10vw;
+}
+
 /** 
  *
  * Extra classes 
@@ -147,6 +162,10 @@ All the styles within the chatbox
     color: #0000FF
 }
 
+.chatbox-continue-white {
+    color: white;
+}
+
 .chatbox-head {
     align-self: center;
     height: 125px;
@@ -155,4 +174,13 @@ All the styles within the chatbox
 
 .chatbox-head-right {
     justify-self: right;
+}
+
+.img-hor {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
 }

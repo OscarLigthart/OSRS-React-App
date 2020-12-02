@@ -12,13 +12,78 @@
         },
         {
             "type":     "dialogue",
-            "speaker":  "sheep",
-            "text":     "So human, I hear that you are trying to steal my valued scepter."
+            "speaker":  "guardian-mummy",
+            "text":     "So human, I hear that you are trying to steal my valued sceptre."
         },
         {
             "type":     "dialogue",
             "speaker":  "guido",
-            "text":     "Yes but I need it for my house."
+            "text":     "Yes, but I need it to create an altar in my house."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guardian-mummy",
+            "text":     "Funny, I seem to be losing more and more sceptre's by the day, and you are unable to get one."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guardian-mummy",
+            "text":     "Maybe it has to do with how popular my pyramid has been lately!"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guardian-mummy",
+            "text":     "It feels good not to be lonely anymore, and have all those people around me!"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "You do realize these aren't actual players right?"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guardian-mummy",
+            "text":     "Silence! Do not ruin this fine moment for me."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guardian-mummy",
+            "text":     "As I am in such a fine mood, I have decided to give you one of my precious sceptres."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "Let me guess.. You won't just hand it over, will you?"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guardian-mummy",
+            "text":     "You read my mind! No, such a previous item should not be received easily."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guardian-mummy",
+            "text":     "I have hidden it in any of the chests in the next room."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guardian-mummy",
+            "text":     "You're guaranteed to get one, but who knows how long it will take!"
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guido",
+            "text":     "Well that sure as hell beats classic RNG."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guardian-mummy",
+            "text":     "Crack the locks to open the chests, and you might be rewarded with my sceptre."
+        },
+        {
+            "type":     "dialogue",
+            "speaker":  "guardian-mummy",
+            "text":     "Good luck!"
         },
         {
             "type":     "end"
@@ -28,7 +93,7 @@
     "complete": [
         {
             "type":     "dialogue",
-            "speaker":  "sheep",
+            "speaker":  "guardian-mummy",
             "text":     "Congratulations on finally receiving my sceptre."
         },
         {
@@ -38,7 +103,7 @@
         },
         {
             "type":     "dialogue",
-            "speaker":  "sheep",
+            "speaker":  "guardian-mummy",
             "text":     "You should not give up so easily, those who persist will be rewarded."
         },
         {
@@ -48,8 +113,8 @@
         },
         {
             "type":     "dialogue",
-            "speaker":  "sheep",
-            "text":     "Bots? There are no bots allowed in my pyramid."
+            "speaker":  "guardian-mummy",
+            "text":     "Bots? There are no bots allowed in my pyramid!"
         },
         {
             "type":     "dialogue",
@@ -58,7 +123,7 @@
         },
         {
             "type":     "dialogue",
-            "speaker":  "sheep",
+            "speaker":  "guardian-mummy",
             "text":     "Nonsense! Anyway, I wish you the best of luck on the rest of your adventure."
         },
         {

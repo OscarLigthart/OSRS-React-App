@@ -12,7 +12,16 @@ import Plunder from './Pyramid/Plunder';
 // Debug for giving items
 // import ItemList from './Tools/Inventory/ItemList'
 
-// ItemList.push('dramen_staff', 'clue_scroll', 'scroll_book', 'eclectic_impling_jar', 'eclectic_impling_jar', 'eclectic_impling_jar', 'eclectic_impling_jar', 'eclectic_impling_jar', 'eclectic_impling_jar', 'eclectic_impling_jar')
+// ItemList.push('sceptre')
+// ItemList.push('dramen_staff', 'clue_scroll', 'scroll_book')//, 'eclectic_impling_jar', 'eclectic_impling_jar', 'eclectic_impling_jar', 'eclectic_impling_jar', 'eclectic_impling_jar', 'eclectic_impling_jar', 'eclectic_impling_jar')
+
+
+/**
+ *  TODO LIST:  (order of relevance)
+ * 
+ *    Debug --> DO 5 RUNS of different things
+ *    
+ */
 
 /**
  *  This is the base of the app when playing.
@@ -31,7 +40,7 @@ class Base extends Component {
 
     this.state = {
       show: true,
-      state: 'intro',
+      state: 'wizard', // default is intro
       stage: 'first',
       teleportAnimation: false,
     }
@@ -47,22 +56,25 @@ class Base extends Component {
 
     switch(location){
       case 'wizard': this.setState({
-        stage: 'second',
-        show: false
+        stage:  'second',
+        show:   false
       });
       break;
 
       case 'zanaris': this.setState({
-        stage: 'third',
-        show: false
+        stage:  'third',
+        show:   false
+      });
+      break;
+
+      case 'pyramid': this.setState({
+        stage:  'fourth',
+        show:   false
       });
       break;
 
       default: this.setState({show: false});
     }
-    
-    // 3 time outs, but first create animation
-    // this.setState({show: false});
     
     setTimeout(()=> {
 
@@ -119,7 +131,7 @@ class Base extends Component {
           onCheckpoint={this.quizHandler}
         />;
 
-        case "zanaris": return <Zanaris onTeleport={this.teleportHandler} checkpointReached={this.minigameComplete}/>
+        case "zanaris": return <Zanaris onTeleport={this.teleportHandler} checkpointReached={this.minigameComplete} stage={this.state.stage}/>
 
         case "puropuro": return <PuroPuro onClueScroll={this.scrollHandler}/>
 

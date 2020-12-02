@@ -4,6 +4,8 @@ import './Game.css';
 import GameInterface from './GameInterface';
 import Inventory from '../Tools/Inventory';
 
+import ItemList from '../Tools/Inventory/ItemList';
+
 /**
  *  This is the gamelayout of the app when playing.
  *  
@@ -15,17 +17,36 @@ class Game extends Component {
 
         super();
     
+        // refs
         this.gameInterface = React.createRef();
+        this.inventory = React.createRef();
 
         this.stage = props.stage;
     }
 
+    /**
+     * Method used to let the base game know to teleport to a different locations
+     *
+     * @param {} location 
+     */
     teleportHandler = (location) => {
         this.props.onTeleport(location);
     }
     
+    /**
+     *  Method to handle the inventory calls with
+     * @param { } item 
+     */
     inventoryHandler = (item) => {
-        this.gameInterface.current.show(item);
+
+      // ugly exception
+      if (item === 'dramen_staff' && this.stage === 'third') return;
+
+      // show the item in the interface
+      this.gameInterface.current.show(item);
+
+      // if clicked on sceptre, add a casket
+      if (item === 'sceptre' && !ItemList.includes('casket')) this.inventory.current.addItem('casket');
     }
     
     render() {
@@ -45,7 +66,7 @@ class Game extends Component {
 
             <GameInterface ref={this.gameInterface} onTeleport={this.teleportHandler} stage={this.stage}/>
 
-            <Inventory onInventoryClick={this.inventoryHandler}/>
+            <Inventory onInventoryClick={this.inventoryHandler} ref={this.inventory}/>
 
           </div>
 

@@ -58,7 +58,7 @@ class Chat extends Component {
   };
 
   inventoryHandler = (event) => {
-    this.props.onItem(event);
+    if (this.props.onItem) this.props.onItem(event);
   };
 
 

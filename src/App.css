@@ -3,6 +3,10 @@
   height: 100%;
 }
 
+.App-container {
+  height: 100%;
+}
+
 
 .App-logo {
   height: 40vmin;
@@ -37,4 +41,27 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.screen-warning {
+  background-color: black;
+  color: white;
+  display: grid;
+  grid-template-rows: 20% 45% 30%;
+  justify-items: center;
+  align-items: center;
+}
+
+.screen-warning-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12pt;
+}
+
+.screen-warning-video {
+  height: 45vh;
+}
+
+.screen-warning-change{
+  height:30vh;
+  width:60%;
 }
